@@ -106,27 +106,30 @@ def hangman(secretWord):
     mistakesMade = 0
     lettersGuessed = []
     
-    while True:
-        
+    while True: # I want it loop until the game ends
+     
         if isWordGuessed(secretWord, lettersGuessed) == True:
             print("-----------\nCongratulations, you won!")
             break
+        
         elif mistakesMade == 8:
             print("-----------\nSorry, you ran out of guesses. The word was else.")
             break
-                  
-        else:
+        
+        # Above is how game ends
+        
+        else: # if the game doesn't end, continue guessing
 
             print("-----------\nYou have " + str(8 - mistakesMade) + " guesses left.")
             print("Available letters: " + getAvailableLetters(lettersGuessed))
             
-            enter = input("Please guess a letter: ").lower()
+            enter = input("Please guess a letter: ").lower() # where user enter a letter, transfered to a lower case
             
-            if enter in set(lettersGuessed):
+            if enter in set(lettersGuessed): # prevent users from entering already guessed letters
                 print("Oops! You've already guessed that letter: " + getGuessedWord(secretWord, lettersGuessed))
 
-            else:
-                lettersGuessed.append(enter)
+            else: # respond to newly guessed letters
+                lettersGuessed.append(enter) # This line should be after redundancy check
                 
                 if enter in set(secretWord):
                     print("Good guess: " + getGuessedWord(secretWord, lettersGuessed))

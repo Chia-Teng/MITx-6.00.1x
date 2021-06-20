@@ -17,7 +17,7 @@ while guess < balance:
     remain = balance # so remain reset to balance each run
     for i in range(0,12): # 12 times
         remain = (remain - guess) * (1 + annualInterestRate/12)
-    # This section calculates balance remained after 12 mon
+    # This block calculates balance remained after 12 mon
         
     if remain <= 0:
         break

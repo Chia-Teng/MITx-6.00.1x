@@ -7,8 +7,8 @@ Created on Mon Jun 14 15:28:59 2021
 """
 
 #Test Case 2:
-balance = 999999
-annualInterestRate = 0.18
+balance = 999999999999
+annualInterestRate = 0.0000001
 
 lower = balance / 12
 upper = balance * (1 + annualInterestRate/12)**12 / 12
@@ -27,6 +27,6 @@ while upper - lower > 0.001: # run until upper and lower are close enough to 2nd
         lower = pay
         
     pay = (lower + upper) / 2 # re-calculate pay and run again
- 
-    
+
+   
 print("Lowest Payment: ", str(round(pay,2)))
