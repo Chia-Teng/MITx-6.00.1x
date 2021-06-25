@@ -15,12 +15,13 @@ Number of times bob occurs is: 2
 """
 
 s = 'azcbobobegghakl' # example given
+target = "bob"
 
-count = 0 # define start point
+count = 0  # count of targets, start with 0
 
-for char in range(len(s)-2): # len(s)-2, so test ends at -3rd char
-
-    if s[char] == "b" and s[char+1] == "o" and s[char+2] == "b": # test if start with "b" followed by "o" then "b"
-        count += 1 # count + 1 if True
+for s_index in range(len(s)-len(target)+1):  # check along the s, using index
+                                             # range shortened so last checked str within the range
+    if s[s_index:s_index+len(target)] == target:
+        count += 1
 
 print("Number of times bob occurs is: " + str(count))

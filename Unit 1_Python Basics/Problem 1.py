@@ -11,14 +11,12 @@ Write a program that counts up the number of vowels contained in the string s.
 Valid vowels are: 'a', 'e', 'i', 'o', and 'u'.
 """
     
-s = 'azcbobobegghakl' # example given
+s = 'azcbobobegghakl'  # example given
 
-count = 0 # define start point
+count = 0  # count of vowels, start with 0
 
-for char in s: # check each char in s
-
-    if char == "a" or char == "e" or char == "i" or char == "o" or char == "u": 
+for s_index in range(len(s)):  # check every index in s
+    if s[s_index] in "aeiou":  # check if the charater is a vowel
         count += 1
-    # count + 1 each vowel counted
 
 print("Number of vowels: " + str(count))

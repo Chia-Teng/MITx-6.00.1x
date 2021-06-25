@@ -11,30 +11,25 @@ Write a program that prints the longest substring of s
 in which the letters occur in alphabetical order.
 """
 
-s = "azcbobobegghakl" # given example
+s = "abcdefghijcbobobegghaklaz" # given example
 
-alphabet = "abcdefghijklmnopqrstuvwxyz" # alphabetic order list
-answer = s[0] # start guess with first char
+answer = s[0]  # start guess with first letter
+elong_index = 0  # this variable is used to exclude repeated check on tested str
 
-for start in range(len(s)-1): # check each potential start point from 1st through -2nd char
+for startpoint in range(len(s)-1):  # check each potential start point from 1st through -2nd char
+    
+    trantient_answer = s[startpoint]  # set a trantient answer to be elongated
+    
+    if startpoint >= elong_index:  # this step excludes repeated check on tested str, so shorten running time
+        
+        for elong_index in range(startpoint+1, len(s)):  # elongate trantient_answer with continuously ascending alphabets
+            if s[elong_index] >= s[elong_index-1]:
+                trantient_answer += s[elong_index]
+            else:
+                break
+        
+    if len(trantient_answer) > len(answer):  # replace answer with longer trantient_answer
+        answer = trantient_answer
 
-    t_answer = s[start] # trantient answer starts with 1st char
-
-    for rest in range(start+1,len(s)): # check each char following start point
-
-        for abc in alphabet: # match each alphebet to current then previous char
-
-            if abc == s[rest-1]:
-                t_answer += s[rest] # if the previous char matches first, extend t_answer
-                break # then stop matching rest of alphabets
-            
-            elif abc == s[rest]:
-                break # if current char matches first,  stop matching rest of alphabets
-            
-        if abc != s[rest-1]:
-            break # if t_answer doesn't extend, stop checking rest of s
-
-    if len(t_answer) > len(answer):
-        answer = t_answer # only keep the first longest result
 
 print("Longest substring in alphabetical order is: " + str(answer))

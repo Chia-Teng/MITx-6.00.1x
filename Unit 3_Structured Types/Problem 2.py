@@ -12,7 +12,7 @@ lettersGuessed = ['e', 'i', 'k', 'p', 'r', 's']
 def getGuessedWord(secretWord, lettersGuessed):
 
     return "".join(l if l in lettersGuessed
-                   else "_"
+                     else "_"
                    for l in secretWord)
 
 print(getGuessedWord(secretWord, lettersGuessed))

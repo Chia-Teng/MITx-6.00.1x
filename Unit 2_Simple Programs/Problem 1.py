@@ -5,12 +5,8 @@ Created on Mon Jun 14 15:07:56 2021
 
 @author: teng
 """
-# Test Case 1
-# balance = 42
-# annualInterestRate = 0.2
-# monthlyPaymentRate = 0.04
 
-# Test Case 2
+# Test
 balance = 484
 annualInterestRate = 0.2
 monthlyPaymentRate = 0.04

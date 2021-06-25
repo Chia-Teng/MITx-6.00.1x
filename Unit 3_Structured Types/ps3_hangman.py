@@ -64,7 +64,7 @@ def getGuessedWord(secretWord, lettersGuessed):
     # FILL IN YOUR CODE HERE...
 
     return "".join(l if l in lettersGuessed
-                   else "_"
+                     else "_"
                    for l in secretWord)
 
 def getAvailableLetters(lettersGuessed):
@@ -100,37 +100,46 @@ def hangman(secretWord):
     '''
     # FILL IN YOUR CODE HERE...
 
+    # opening. tell the player the length of secretWord
     print("Welcome to the game Hangman!\nI am thinking of a word that is "
           + str(len(secretWord)), "letters long.")
     
+    # initial values: they play haven't made a guess or made any mistake
     mistakesMade = 0
     lettersGuessed = []
     
-    while True: # I want it loop until the game ends
-     
-        if isWordGuessed(secretWord, lettersGuessed) == True:
-            print("-----------\nCongratulations, you won!")
-            break
-        
-        elif mistakesMade == 8:
-            print("-----------\nSorry, you ran out of guesses. The word was else.")
-            break
-        
-        # Above is how game ends
-        
-        else: # if the game doesn't end, continue guessing
+    while True:  # I want it loop until the game ends
 
-            print("-----------\nYou have " + str(8 - mistakesMade) + " guesses left.")
-            print("Available letters: " + getAvailableLetters(lettersGuessed))
+        # This block indicates how game ends (win or lose)
+        if isWordGuessed(secretWord, lettersGuessed) == True:
+            print("-----------\n"
+                  "Congratulations, you won!")
+            break  
+        elif mistakesMade == 8:
+            print("-----------\n"
+                  "Sorry, you ran out of guesses. The word was else.")
+            break
+
+        # if the game doesn't end, continue guessing
+        else:
+
+            # tell the player guesses left and available letters
+            print("-----------\n"
+                  "You have " + str(8 - mistakesMade) + " guesses left.\n"
+                  "Available letters: " + getAvailableLetters(lettersGuessed))
+
+            # let the player enter a letter and transfer it to a lower case
+            enter = input("Please guess a letter: ").lower()
             
-            enter = input("Please guess a letter: ").lower() # where user enter a letter, transfered to a lower case
-            
-            if enter in set(lettersGuessed): # prevent users from entering already guessed letters
+            # prevent users from entering already guessed letters
+            if enter in set(lettersGuessed):
                 print("Oops! You've already guessed that letter: " + getGuessedWord(secretWord, lettersGuessed))
 
-            else: # respond to newly guessed letters
-                lettersGuessed.append(enter) # This line should be after redundancy check
-                
+            # respond to newly guessed letters
+            else:
+
+                lettersGuessed.append(enter)
+
                 if enter in set(secretWord):
                     print("Good guess: " + getGuessedWord(secretWord, lettersGuessed))
                 else:
