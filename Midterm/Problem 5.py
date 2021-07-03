@@ -12,7 +12,7 @@ def dict_invert(d):
     Returns an inverted dictionary according to the instructions above
     '''
     
-    dNew = {}  # create a new dict to prevent mutating d
+    dNew = {}  # create a new dict to avoid mutating d
     for key in d:  # assign each item of d into new dic
                    # note I refer to the values of d to be keys of dNew
         if d[key] in dNew:  # extend dNew value list, this if func prevents NameError error

@@ -18,18 +18,20 @@ def applyF_filterG(L, f, g):
     Returns the largest element in the mutated L or -1 if the list is empty
     """
 
-    filteredList = []
-    for integer in L:
+    filteredList = []  # create a new list to prevent floating L
+    
+    for integer in L:  # extend filteredList if g(f(i))
         if g(f(integer)):
             filteredList.append(integer)
     
-    L[:] = filteredList
+    L[:] = filteredList  # mutate L
     
-    if filteredList == []:
+    if filteredList == []:  # empty list situation
         return -1
     else:
         return max(filteredList)
 
+# for testing
 def f(i):
     return i + 2
 def g(i):
